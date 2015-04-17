@@ -1,0 +1,59 @@
+<polymer-element name="example-app">
+  <template>
+    <link rel="stylesheet" href="example_app.css">
+
+    <!-- Keyboard nav controller. -->
+    <core-a11y-keys id="keys" target="{{body}}"
+                    keys="up down left right space space+shift"
+                    on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
+
+    <core-scaffold id="scaffold">
+      <nav>
+        <core-toolbar layout horizontal center-center>
+          <core-image src="Logotron-Red.svg"></core-image>
+        </core-toolbar>
+        <core-menu id="menu" valueattr="hash" selected="{{route}}">
+          <template repeat="{{page in pages}}">
+            <paper-item hash="{{page.path}}"
+                        on-click="{{menuItemClicked}}" noink>
+              <core-icon icon="label{{route != page.path ? '-outline' : ''}}">
+              </core-icon>
+              <a _href="#{{page.path}}">{{page.name}}</a>
+            </paper-item>
+          </template>
+        </core-menu>
+      </nav>
+
+      <core-toolbar tool flex>
+        <div flex>{{selectedPage.name}}</div>
+      </core-toolbar>
+      <div layout horizontal fit>
+        <core-animated-pages id="pages" selected="{{route}}" valueattr="hash"
+                             transitions="slide-from-right"
+                             on-tap="{{cyclePages}}">
+<!--           <template repeat="{{page in pages}}">
+            <section hash="{{page.path}}" layout vertical>
+              <div>{{page.name}}</div>
+            </section>
+          </template> -->
+          <section hash="one" layout vertical>
+            <first-page flex></first-page>
+          </section>
+          <section hash="two" layout vertical>
+            <div>second</div>
+          </section>
+          <section hash="three" layout vertical>
+            <div>third</div>
+          </section>
+          <section hash="four" layout vertical>
+            <div>fourth</div>
+          </section>
+          <section hash="five" layout vertical>
+            <div>fifth</div>
+          </section>
+        </core-animated-pages>
+      </div>
+
+    </core-scaffold>
+  </template>
+</polymer-element>
