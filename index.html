@@ -286,17 +286,15 @@ html /deep/ [segment], html /deep/ segment {
 
 </style>
 
-<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+<script src="packages/polymer_interop/src/js/polymer.min.js"></script>
 
 <script>
-// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
-// script tag is necessary to work around a bug in Chrome 36.
+// This empty script tag is necessary to work around dartbug.com/19650
 </script>
 
-<!-- unminified for debugging:
-<link rel="import" href="src/js/polymer/layout.html">
-<script src="src/js/polymer/polymer.js"></script>
--->
+<script>
+// This empty script tag is necessary to work around dartbug.com/19650
+</script>
 
 
 <polymer-element name="core-xhr-dart" hidden="">
@@ -6035,10 +6033,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 :host /deep/ core-toolbar {
-  background-color: #03a9f4;
+  background-color: #607D8B;
   color: #fff;
 }
 
+#drawer {
+  background-color:#455A64;
+}
 
 core-animated-pages {
   width: 100%;
@@ -6048,11 +6049,11 @@ core-animated-pages {
 
 core-animated-pages > * {
   font-size: 50px;
-  background-color: white;
+  background-color: #999999;
 }
 
 core-menu {
-  color: #01579b;
+  color: #FFFFFF;
   margin: 10px 0 0 0;
 }
 
@@ -6064,10 +6065,11 @@ paper-item a {
   text-decoration: none;
   color: currentcolor;
   margin-left: 5px;
+  outline: 0;
 }
 
 core-menu > paper-item.core-selected {
-  background: #e1f5fe;
+  background: #EF5350;
 }
 
 @media all and (max-width: 480px) {
@@ -6082,7 +6084,7 @@ core-menu > paper-item.core-selected {
     <core-a11y-keys id="keys" target="{{body}}" keys="up down left right space space+shift" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
 
     <core-scaffold id="scaffold">
-      <nav>
+      <core-header-panel id="drawer" navigation="" flex="" mode="seamed">
         <core-toolbar layout="" horizontal="" center-center="">
           <core-image src="Logotron-Red.svg"></core-image>
         </core-toolbar>
@@ -6095,13 +6097,14 @@ core-menu > paper-item.core-selected {
             </paper-item>
           </template>
         </core-menu>
-      </nav>
+      </core-header-panel>
 
       <core-toolbar tool="" flex="">
         <div flex="">{{selectedPage.name}}</div>
       </core-toolbar>
       <div layout="" horizontal="" fit="">
-        <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right" on-tap="{{cyclePages}}">
+<!-- Readd on-tap="{{cyclePages}}" if you want pages to progress when clicking on blank space   -->
+        <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right">              
 <!--           <template repeat="{{page in pages}}">
             <section hash="{{page.path}}" layout vertical>
               <div>{{page.name}}</div>
