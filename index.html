@@ -6025,6 +6025,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
   
 </polymer-element>
+<polymer-element name="second-page">
+    <template>
+        <style>
+        </style>
+        <h1>I really hope this works too</h1>
+    </template>
+    
+</polymer-element><polymer-element name="third-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <!-- Template content here -->
+    <h1>And Again</h1>
+  </template>
+  
+</polymer-element>
+<polymer-element name="fourth-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <!-- Template content here -->
+    <h1>Almost there</h1>
+  </template>
+  
+</polymer-element>
+<polymer-element name="fifth-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <!-- Template content here -->
+    <h1>Finished!</h1>
+  </template>
+  
+</polymer-element>
 <polymer-element name="example-app">
   <template>
     <style>:host {
@@ -6104,7 +6147,7 @@ core-menu > paper-item.core-selected {
       </core-header-panel>
 
       <core-toolbar tool="" flex="">
-        <div flex="">{{selectedPage.name}}</div>
+        <div flex="">{{selectedPage.header}}</div>
       </core-toolbar>
       <div layout="" horizontal="" fit="">
 <!-- Readd on-tap="{{cyclePages}}" if you want pages to progress when clicking on blank space   -->
@@ -6118,16 +6161,16 @@ core-menu > paper-item.core-selected {
             <first-page flex=""></first-page>
           </section>
           <section hash="two" layout="" vertical="">
-            <div>second</div>
+            <second-page flex=""></second-page>
           </section>
           <section hash="three" layout="" vertical="">
-            <div>third</div>
+            <third-page flex=""></third-page>
           </section>
           <section hash="four" layout="" vertical="">
-            <div>fourth</div>
+            <fourth-page flex=""></fourth-page>
           </section>
           <section hash="five" layout="" vertical="">
-            <div>fifth</div>
+            <fifth-page flex=""></fifth-page>
           </section>
         </core-animated-pages>
       </div>
