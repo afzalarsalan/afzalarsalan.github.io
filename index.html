@@ -6021,7 +6021,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <template>
     <style>
     </style>
-  <h1>I really hope this works</h1>
+  <h1 layout="" horizontal="" center-center="">I really hope this works</h1>
   </template>
   
 </polymer-element>
@@ -6076,7 +6076,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 }
 
 :host /deep/ core-toolbar {
-  background-color: #607D8B;
+  background-color: #4CAF50;
   color: #fff;
 }
 
@@ -6095,8 +6095,8 @@ core-animated-pages {
 }
 
 core-animated-pages > * {
-  font-size: 50px;
-  background-color: #999999;
+  font-size: 24px;
+  background-color: white;
 }
 
 core-menu {
@@ -6146,10 +6146,10 @@ core-menu > paper-item.core-selected {
         </core-menu>
       </core-header-panel>
 
-      <core-toolbar tool="" flex="">
+      <core-toolbar tool="" flex="" class="bottom">
         <div flex="">{{selectedPage.header}}</div>
       </core-toolbar>
-      <div layout="" horizontal="" fit="">
+      <div layout="" horizontal="" center-center="" fit="">
 <!-- Readd on-tap="{{cyclePages}}" if you want pages to progress when clicking on blank space   -->
         <core-animated-pages id="pages" selected="{{route}}" valueattr="hash" transitions="slide-from-right">              
 <!--           <template repeat="{{page in pages}}">
@@ -6157,7 +6157,7 @@ core-menu > paper-item.core-selected {
               <div>{{page.name}}</div>
             </section>
           </template> -->
-          <section hash="one" layout="" vertical="">
+          <section hash="one" layout="" vertical="" center-center="">
             <first-page flex=""></first-page>
           </section>
           <section hash="two" layout="" vertical="">
