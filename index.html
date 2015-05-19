@@ -5,6 +5,7 @@ BSD-style license that can be found in the LICENSE file.
 --><!DOCTYPE html><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <link href="//fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic" rel="stylesheet" type="text/css">
   <title>ReVAMP: A new way of thinking</title>
 </head>
 <body unresolved="" fullbleed=""><div hidden=""><style shim-shadowdom="">
@@ -6020,16 +6021,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <polymer-element name="first-page">
   <template>
     <style>
+    	p{
+    		max-width: 800px;
+    		font-size: 14px;
+    	}
+    	h2{
+    		font-size: 24px;
+    		height: 48px;
+    	}
     </style>
-  <h1 layout="" horizontal="" center-center="">I really hope this works</h1>
+  <h2>I really hope this works</h2>
+  <p>I know this works but still I feel hesistant to call it done.</p>
+  <p>I bet this spacing will be off</p>
+  <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
   </template>
   
 </polymer-element>
 <polymer-element name="second-page">
     <template>
         <style>
+    	h2{
+    		font-size: 24px;
+    		font-weight: 300;
+    		height: 48px;
+    	}
         </style>
-        <h1>I really hope this works too</h1>
+        <h2>I really hope this works too</h2>
     </template>
     
 </polymer-element><polymer-element name="third-page">
@@ -6038,9 +6055,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+      h2{
+        font-size: 24px;
+        font-weight: 300;
+        height: 48px;
+      }
     </style>
     <!-- Template content here -->
-    <h1>And Again</h1>
+    <h2>And Again</h2>
   </template>
   
 </polymer-element>
@@ -6050,9 +6072,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+      h2{
+        font-size: 24px;
+        font-weight: 300;
+        height: 48px;
+      }
     </style>
     <!-- Template content here -->
-    <h1>Almost there</h1>
+    <h2>Almost there</h2>
   </template>
   
 </polymer-element>
@@ -6062,17 +6089,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
       }
+      h2{
+        font-size: 24px;
+        font-weight: 300;
+        height: 48px;
+      }
     </style>
     <!-- Template content here -->
-    <h1>Finished!</h1>
+    <h2>Finished!</h2>
   </template>
   
 </polymer-element>
 <polymer-element name="example-app">
   <template>
     <style>:host {
-  font-family: "RobotoDraft";
-  font-weight: 300;
+  font-family: "RobotoDraft", sans-serif;
+  font-weight: 400;
 }
 
 :host /deep/ core-toolbar {
@@ -6088,6 +6120,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   background-color: #455A64;
 }
 
+#header{
+  font-weight: 400;
+  font-size: 45px;
+  height: 48px;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  transform-origin:0 0;
+  -webkit-transform-origin: 0 0;
+}
+
+.holder{
+  padding-left: 64px;
+  padding-right: 64px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  /*max-width: 912px;*/
+
+}
+
+.shrunk{
+  transform: scale(0.44444) translateY(.97em);
+  -webkit-transform: scale(0.44444) translateY(.97em);
+}
+
 core-animated-pages {
   width: 100%;
   height: 100%;
@@ -6095,7 +6151,7 @@ core-animated-pages {
 }
 
 core-animated-pages > * {
-  font-size: 24px;
+  /*font-size: 24px;*/
   background-color: white;
 }
 
@@ -6124,13 +6180,18 @@ core-menu > paper-item.core-selected {
     width: 100%;
     height: 100%;
   }
+
+  .holder{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 </style>
 
     <!-- Keyboard nav controller. -->
     <core-a11y-keys id="keys" target="{{body}}" keys="up down left right space space+shift" on-keys-pressed="{{keyHandler}}"></core-a11y-keys>
 
-    <core-scaffold id="scaffold" mode="waterfall-tall">
+    <core-scaffold id="scaffold" mode="waterfall-tall" on-scroll="{{scrollCheck}}">
       <core-header-panel id="drawer" navigation="" flex="" mode="standard">
         <core-toolbar id="logo-holder" layout="" horizontal="" center-center="">
           <core-image src="Logotron-Red.svg"></core-image>
@@ -6147,7 +6208,7 @@ core-menu > paper-item.core-selected {
       </core-header-panel>
 
       <core-toolbar tool="" flex="" class="bottom">
-        <div flex="">{{selectedPage.header}}</div>
+        <div flex=""><h1 id="header">{{selectedPage.header}}</h1></div>
       </core-toolbar>
       <div layout="" horizontal="" center-center="" fit="">
 <!-- Readd on-tap="{{cyclePages}}" if you want pages to progress when clicking on blank space   -->
@@ -6157,19 +6218,19 @@ core-menu > paper-item.core-selected {
               <div>{{page.name}}</div>
             </section>
           </template> -->
-          <section hash="one" layout="" vertical="" center-center="">
+          <section hash="one" class="holder">
             <first-page flex=""></first-page>
           </section>
-          <section hash="two" layout="" vertical="">
+          <section hash="two" class="holder">
             <second-page flex=""></second-page>
           </section>
-          <section hash="three" layout="" vertical="">
+          <section hash="three" class="holder">
             <third-page flex=""></third-page>
           </section>
-          <section hash="four" layout="" vertical="">
+          <section hash="four" class="holder">
             <fourth-page flex=""></fourth-page>
           </section>
-          <section hash="five" layout="" vertical="">
+          <section hash="five" class="holder">
             <fifth-page flex=""></fifth-page>
           </section>
         </core-animated-pages>
